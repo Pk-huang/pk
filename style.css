@@ -1,0 +1,52 @@
+body {
+    font-family: sans-serif;
+    background: url("/sun.png") 50% 50% /cover;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.container {
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: #ffffffaa;
+    border: unset;
+    border-radius: 10px;
+}
+
+.off{
+    opacity: 0;
+}
+
+#suggestionList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 10;
+}
+
+#suggestionList li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#suggestionList li:hover {
+    background-color: #e6f7ff;
+}
