@@ -1,11 +1,7 @@
-const cities = [
-    "Taipei", "Tokyo", "Toronto", "New York", "London",
-    "Paris", "Beijing", "Seoul", "Singapore", "Sydney"
-];
-
-
 const searchInput = document.querySelector('#searchInput')
 const suggestionList = document.querySelector('#suggestionList')
+
+const renderedCities = new Set()
 
 
 searchInput.addEventListener('input', function () {
@@ -15,24 +11,33 @@ searchInput.addEventListener('input', function () {
 
     if (keyword == "") return
 
-    let matchedCities = cities.filter(city =>
-        city.toLowerCase().includes(keyword)
-        // city.toLowerCase() == keyword
-    )
+    console.log(keyword)
+   
 
-    matchedCities.forEach(city => {
-        let li = document.createElement('li')
-        li.textContent = city
+    let li = document.createElement('li')
+    li.textContent = keyword
 
-        suggestionList.appendChild(li)
+    suggestionList.appendChild(li)
 
-        // 點選提示後觸發 API
-        li.addEventListener("click", () => {
-            searchInput.value = city;
-            suggestionList.innerHTML = "";
-            fetchWeather(city); // 呼叫這裡
-        });
-    })
+    // 點選提示後觸發 API
+    li.addEventListener("click", () => {
+        searchInput.value = keyword;
+        suggestionList.innerHTML = "";
+
+        if (renderedCities.has(keyword)) {
+
+            console.log('Its allready heve it !!')
+            return
+        }
+
+        // 這裡可以呼叫 API
+        fetchWeather(keyword); // 呼叫這裡 建立小卡片
+
+        renderedCities.add(keyword)
+      
+
+    });
+
 
 })
 
@@ -76,8 +81,14 @@ function renderWeatherCard(data) {
       <span>${temp}°C</span>
     </div>
     <img src="${iconUrl}" alt="${description}" />
+    <button class="delete-btn">✖</button>
   `;
+    
+    card.querySelector('.delete-btn').addEventListener('click', () => {
+        weatherContainer.removeChild(card)
+        renderedCities.delete(city.trim().toLowerCase())
 
+    })
     weatherContainer.appendChild(card);
 }
 
