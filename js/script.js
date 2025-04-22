@@ -1,7 +1,7 @@
+const renderedCities = new Set()
+
 const searchInput = document.querySelector('#searchInput')
 const suggestionList = document.querySelector('#suggestionList')
-
-const renderedCities = new Set()
 
 
 searchInput.addEventListener('input', function () {
@@ -29,7 +29,6 @@ searchInput.addEventListener('input', function () {
             console.log('Its allready heve it !!')
             return
         }
-
         // 這裡可以呼叫 API
         fetchWeather(keyword); // 呼叫這裡 建立小卡片
 
@@ -37,14 +36,11 @@ searchInput.addEventListener('input', function () {
       
 
     });
-
-
 })
 
 
 const weatherContainer = document.getElementById("weatherContainer");
 const API_KEY = "d67a906df3f7b73e26ea640be6c92395"; // 👈 請替換成你註冊的 key
-
 
 async function fetchWeather(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
