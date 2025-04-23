@@ -3,6 +3,7 @@
 // 溫度單位：'C'（預設）或 'F'
 let currentUnit = 'C';
 
+
 // 使用 Set 儲存城市名稱（小寫）
 const renderedCities = new Set();
 

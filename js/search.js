@@ -2,8 +2,6 @@ import { fetchWeather } from './api.js'
 import { addCity,hasCity } from './store.js';
 
 
-const renderedCities = new Set()
-
 
 export function initSearch() {
     const searchInput = document.querySelector('#searchInput')
@@ -17,7 +15,7 @@ export function initSearch() {
 
         if (keyword == "") return
 
-        console.log(keyword)
+      
 
 
         let li = document.createElement('li')
@@ -31,15 +29,16 @@ export function initSearch() {
             suggestionList.innerHTML = "";
 
             if (hasCity(keyword)) {
-
                 console.log('Its allready heve it !!')
                 return
             }
+            console.log(keyword)
             // 這裡可以呼叫 API
             fetchWeather(keyword); // 呼叫這裡 建立小卡片
 
 
             addCity(keyword)
+            
            
         });
     })
