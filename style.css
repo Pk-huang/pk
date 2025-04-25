@@ -108,4 +108,16 @@ input {
     cursor: pointer;
     font-size: 14px;
   }
+
+    
+  #restoreBtn {
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: #22ba00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
   

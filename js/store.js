@@ -7,6 +7,9 @@ let currentUnit = 'C';
 // 使用 Set 儲存城市名稱（小寫）
 const renderedCities = new Set();
 
+const StorageKey = 'StorageKey'
+
+let PreviousStep
 // ========================
 // 溫度單位切換與查詢
 // ========================
@@ -25,6 +28,7 @@ export function toggleUnit() {
 
 export function addCity(cityName) {
   renderedCities.add(cityName.toLowerCase());
+  savedStorage()
 }
 
 export function removeCity(cityName) {
@@ -37,4 +41,13 @@ export function hasCity(cityName) {
 
 export function getAllCities() {
   return Array.from(renderedCities);
+}
+
+export function savedStorage() {
+  let citiesArry = Array.from(renderedCities)
+  localStorage.setItem(StorageKey, JSON.stringify(citiesArry))
+}
+
+export function readStorage() {
+  return JSON.parse(localStorage.getItem(StorageKey)) || []
 }
