@@ -22,3 +22,22 @@ export async function fetchWeather(city) {
 
 }
 
+
+export async function fetchWeatherByCoords(lat, lon) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+
+    try {
+        const response = await fetch(url)
+        if (!response.ok) throw new Error("定位天氣失敗");
+
+        const data = await response.json();
+        renderWeatherCard(data, (cityKey) => {
+            removeCity(cityKey);
+          });
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+
+}
+
