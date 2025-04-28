@@ -120,4 +120,26 @@ input {
     cursor: pointer;
     font-size: 14px;
   }
+
+  .ui-feedback {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    color: white;
+  }
+  
+  .ui-feedback.loading {
+    background-color: #007bff;
+  }
+  
+  .ui-feedback.error {
+    background-color: crimson;
+  }
+  
   
